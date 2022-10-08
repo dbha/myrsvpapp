@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rsvp-ingress
+  namespace: default
+spec:
+  rules:
+  - host: dbha-rsvp.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: rsvp-service
+          servicePort: 80
+

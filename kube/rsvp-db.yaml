@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp-db
+  namespace: rsvpapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      appdb: rsvpdb
+  template:
+    metadata:
+      labels:
+        appdb: rsvpdb
+    spec:
+#      nodeSelector:
+#        database: enabled
+      containers:
+      - name: rsvp-db
+        image: harborapp.shared.lab.pksdemo.net/my-rsvpapp/mongo:3.6
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: rsvp-db-volume
+          mountPath: /var/lib/mongodb
+          readOnly: false
+      volumes:
+      - name : rsvp-db-volume
+        persistentVolumeClaim:
+          claimName: rsvp-db-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    app: rsvpdb
+  namespace: rsvpapp
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    appdb: rsvpdb
+#  type: LoadBalancer

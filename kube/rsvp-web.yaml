@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp-web
+  namespace: rsvpapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rsvp-web
+  template:
+    metadata:
+      labels:
+        app: rsvp-web
+    spec:
+      containers:
+      - name: rsvp-app
+        #image: dbha/rsvpapp:latest
+        image: harborapp.shared.lab.pksdemo.net/my-rsvpapp/rsvpapp:latest
+        imagePullPolicy: Always
+        env:
+        - name: MONGODB_HOST
+          value: mongodb
+          #value: vsphere-tkc-cluster2-mongodb.rsvpapp.haas-218.pez.pivotal.io
+          #value: 10.220.26.45:27017
+        ports:
+        - containerPort: 5000
+          name: web-port
+        volumeMounts:
+        - name: rsvp-web-pv
+          mountPath: /var/log/rsvp-web
+          readOnly: false
+      volumes:
+      - name : rsvp-web-pv
+        persistentVolumeClaim:
+          claimName: rsvp-web-pvc
+
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: rsvp-service
+#  labels:
+#    app: rsvp-service
+#  namespace: rsvpapp
+#spec:
+#  type: LoadBalancer
+#  ports:
+#  - port: 80
+#    targetPort: web-port
+#    protocol: TCP
+#  selector:
+#    app: rsvp-web

@@ -1,0 +1,14 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: mongodb-httpproxy
+  namespace: rsvpapp
+spec:
+  virtualhost:
+    fqdn: mongodb.shared.lab.pksdemo.net
+  routes:
+    - conditions:
+      - prefix: /
+      services:
+        - name: mongodb
+          port: 27017
