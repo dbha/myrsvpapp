@@ -2,5 +2,5 @@ flask
 pymongo
 pytest
 mongomock
-gunicorn==20.0.4
-web.py==0.62
+gunicorn
+web.py
