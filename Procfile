@@ -1,1 +1,1 @@
-gunicorn -w 2 --bind 0.0.0.0:8080 rsvpapp
+web: gunicorn -w 2 --bind 0.0.0.0:8080 web:app

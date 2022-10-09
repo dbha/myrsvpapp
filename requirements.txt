@@ -3,4 +3,3 @@ pymongo
 pytest
 mongomock
 gunicorn
-web.py
