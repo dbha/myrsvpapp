@@ -80,11 +80,12 @@ def new():
     stream_handler = logging.StreamHandler()
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
+    
     # log를 파일에 출력
-    file_handler = logging.FileHandler('/var/log/rsvp-web/rsvp.log')
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    logger.info(f'{userName} 님 등록되었습니다')
+    #file_handler = logging.FileHandler('/var/log/rsvp-web/rsvp.log')
+    #file_handler.setFormatter(formatter)
+    #logger.addHandler(file_handler)
+    #logger.info(f'{userName} 님 등록되었습니다')
 
     return redirect(url_for('rsvp'))
 
