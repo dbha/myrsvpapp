@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rsvpapp-web
+  description: Rsvpapp 
+  tags:
+    - web
+    - frotnend
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app=web'
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  type: service
+  lifecycle: experimental
+  owner: marketing-team
+  system: sales
+  dependsOn: [Component:rsvpapp-db]

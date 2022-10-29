@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: rsvpapp-catalog-info
+  description: Rsvpapp catalog for Backstage
+  annotations:
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  targets:
+    - ./components/rsvpapp-web.yaml
+    - ./groups/marketing-org.yaml
+    - ./systems/rsvpapp-web-system.yaml
+    - ./domains/cloudapps-domain.yaml
