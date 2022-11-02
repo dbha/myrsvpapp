@@ -1,0 +1,27 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  labels:
+    app.kubernetes.io/part-of: my-rsvpapp
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/workload-type: web
+  name: rsvpapp
+  namespace: demo-app
+spec:
+  env:
+  - name: MONGODB_HOST
+    value: mongodb
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/language: python
+      apps.tanzu.vmware.com/pipeline: test
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/dbha/myrsvpapp

@@ -1,0 +1,87 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition Test
+  version: v0
+servers:
+- url: https://my-rsvpapp-demo-app.full.lab.pksdemo.net
+  description: myrsvpapp API definition
+paths:
+  "/":
+    get:
+      tags:
+      - rsvpapp-controller
+      operationId: index
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+    put:
+      tags:
+      - rsvpapp-controller
+      operationId: index_1
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+    post:
+      tags:
+      - rsvpapp-controller
+      operationId: index_2
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+    delete:
+      tags:
+      - rsvpapp-controller
+      operationId: index_6
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+    options:
+      tags:
+      - rsvpapp-controller
+      operationId: index_3
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+    head:
+      tags:
+      - rsvpapp-controller
+      operationId: index_5
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+    patch:
+      tags:
+      - rsvpapp-controller
+      operationId: index_4
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+components: {}

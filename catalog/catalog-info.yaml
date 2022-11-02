@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-rsvpapp
+  annotations:
+    "backstage.io/kubernetes-label-selector": "app.kubernetes.io/part-of=my-rsvpapp"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: marketing-team
+  providesApis:
+    - my-rsvpapp
